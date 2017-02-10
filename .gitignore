@@ -1,4 +1,6 @@
 TV_Notifier.conf
+shows.json
+Gemfile.lock
 
 *.gem
 *.rbc
