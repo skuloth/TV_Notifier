@@ -62,8 +62,8 @@ module Helper
     airing = Array.new
 
     #for each show ID query episodes firstAired to see if an ep aired today push to array
-    sID.each do |title, ID|
-      url = 'https://api.thetvdb.com/series/' + ID + '/episodes/query?firstAired=' + today
+    sID.each do |title, id|
+      url = 'https://api.thetvdb.com/series/' + id + '/episodes/query?firstAired=' + today
       response = RestClient.get(url, auth)
       if(reponse.code == 200)
         search = JSON.parse(response)['data']
