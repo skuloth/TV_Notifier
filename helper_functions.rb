@@ -28,7 +28,7 @@ module Helper
       sID = Hash.new
     end
 
-    #Stores directory local to TV_Notifier 
+    #Stores directory local to TV_Notifier
     home = Dir.pwd()
 
     Dir.chdir(conf['default']['media_dir'])
@@ -67,7 +67,7 @@ module Helper
 
     #for each show ID query episodes firstAired to see if an ep aired today push to array
     sID.each do |title, id|
-      url = 'https://api.thetvdb.com/series/' + id + '/episodes/query?firstAired=' + today
+      url = 'https://api.thetvdb.com/series/' + id.to_s + '/episodes/query?firstAired=' + today
       response = RestClient.get(url, auth)
       if(reponse.code == 200)
         search = JSON.parse(response)['data']
