@@ -79,12 +79,14 @@ module Helper
 
   # email list of airing episodes to supplied address
   def Helper.email (airing, conf)
-    msg = ''
+    msg = 'Subject: TV Airing Today\n\n'
 
     if(airing.length() > 0)
-
+      airing.each do |ep|
+        msg += ep + '\n'
+      end
     else
-
+      msg += 'No new episodes air today'
     end
 
     mail_server = conf[email][smtp_server] + ':' + conf[email][smtp_port]
