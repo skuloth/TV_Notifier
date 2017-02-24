@@ -84,17 +84,16 @@ module Helper
 
   # email list of airing episodes to supplied address
   def Helper.email (airing, conf)
-    msg = 'Subject: TV Airing Today\n\n'
-
+    msg = "Subject: TV Airing Today\n\n"
     if(airing.length() > 0)
       airing.each do |ep|
-        msg += ep + '\n'
+        msg += ep + "\n"
       end
     else
-      msg += 'No new episodes air today'
+      msg += "No new episodes air today"
     end
 
-    mail_server = conf['email']['smtp_server'] + ':' + conf['email']['smtp_port']
+    mail_server = conf['email']['smtp_server'] + ':' + conf['email']['smtp_port'].to_s
 
     smtp = Net::SMTP.new('smtp.gmail.com', 587)
     smtp.enable_starttls
