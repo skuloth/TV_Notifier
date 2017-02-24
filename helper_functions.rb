@@ -94,12 +94,12 @@ module Helper
       msg += 'No new episodes air today'
     end
 
-    mail_server = conf[email][smtp_server] + ':' + conf[email][smtp_port]
+    mail_server = conf['email']['smtp_server'] + ':' + conf['email']['smtp_port']
 
     smtp = Net::SMTP.new('smtp.gmail.com', 587)
     smtp.enable_starttls
-    smtp.start(mail_server, conf[email][from_email], conf[email][email_password], :login) do
-      smtp.send_message(msg, conf[email][from_email], conf[email][to_email])
+    smtp.start(mail_server, conf['email']['from_email'], conf['email']['email_password'], :login) do
+      smtp.send_message(msg, conf['email']['from_email'], conf['email']['to_email'])
     end
   end
 end
