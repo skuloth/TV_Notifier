@@ -69,7 +69,7 @@ module Helper
     sID.each do |title, id|
       url = 'https://api.thetvdb.com/series/' + id.to_s + '/episodes/query?firstAired=' + today
       RestClient.get(url, auth) do |response, request, result|
-        if(reponse.code == 200)
+        if(response.code == 200)
           search = JSON.parse(response)['data']
           search.each do |ep|
             epStr = title + ': ' + ep['airedSeason'].to_s + 'x' + ep['airedEpisodeNumber'].to_s + ' - ' + ep['episodeName']
