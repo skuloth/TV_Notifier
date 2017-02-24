@@ -28,6 +28,9 @@ module Helper
       sID = Hash.new
     end
 
+    #Stores directory local to TV_Notifier 
+    home = Dir.pwd()
+
     Dir.chdir(conf['default']['media_dir'])
     Dir.glob('*').each do |show|
       # Search tvdb api for show ID if ID isn't already stored locally
@@ -48,6 +51,7 @@ module Helper
     end
 
     # Save hash of title -> TVDB id to disk
+    Dir.chdir(home)
     File.open('shows.json', 'w') do |f|
       f.write(JSON.pretty_generate(sID))
     end
