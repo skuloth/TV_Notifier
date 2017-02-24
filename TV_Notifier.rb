@@ -18,7 +18,7 @@ when 200
 
   sID = Helper.showIDs(conf, auth)
   airing = Helper.getEps(sID, auth)
-
+  email(airing, conf)
 when 401
   #Access Denied
 else

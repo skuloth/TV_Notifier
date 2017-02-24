@@ -3,6 +3,7 @@ require 'json'
 require 'inifile'
 require 'addressable/uri'
 require 'rest-client'
+require 'net/smtp'
 
 module Helper
   # Authenticate to TVDB api
@@ -54,6 +55,7 @@ module Helper
     return sID
   end
 
+  # Generate list of episodes airing today
   def Helper.getEps (sID, auth)
     #Date string for the day yyyy-mm-dd
     today = Time.new.strftime('%F')
@@ -73,5 +75,24 @@ module Helper
     end
     #return array of airing episodes
     return airing
+  end
+
+  # email list of airing episodes to supplied address
+  def Helper.email (airing, conf)
+    msg = ''
+
+    if(airing.length() > 0)
+
+    else
+
+    end
+
+    mail_server = conf[email][smtp_server] + ':' + conf[email][smtp_port]
+
+    smtp = Net::SMTP.new('smtp.gmail.com', 587)
+    smtp.enable_starttls
+    smtp.start(mail_server, conf[email][from_email], conf[email][email_password], :login) do
+      smtp.send_message(msg, conf[email][from_email], conf[email][to_email])
+    end
   end
 end
