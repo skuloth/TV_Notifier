@@ -92,7 +92,7 @@ module Helper
 
     mail_server = conf['email']['smtp_server'] + ':' + conf['email']['smtp_port'].to_s
 
-    smtp = Net::SMTP.new('smtp.gmail.com', 587)
+    smtp = Net::SMTP.new(conf['email']['smtp_server'], conf['email']['smtp_port'])
     smtp.enable_starttls
     smtp.start(mail_server, conf['email']['from_email'], conf['email']['email_password'], :login) do
       smtp.send_message(msg, conf['email']['from_email'], conf['email']['to_email'])
