@@ -5,7 +5,8 @@ require 'inifile'
 require_relative 'helper_functions'
 
 #Read Conf
-conf = IniFile.load('TV_Notifier.conf')
+#Path must be changed for users install location, should likely match install_dir conf value
+conf = IniFile.load('/scripts/TV_Notifier/TV_Notifier.conf')
 response = Helper.authenticate(conf)
 
 case response.code

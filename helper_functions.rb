@@ -21,15 +21,12 @@ module Helper
   # Generate list of TVDB show IDs
   def Helper.showIDs (conf, auth)
 
-    if(File.exists?('shows.json'))
+    if(File.exists?(conf['default']['install_dir'] + 'shows.json'))
       # Read in hash of show title -> TVDB ID
-      sID = JSON.parse(File.read('shows.json'))
+      sID = JSON.parse(File.read(conf['default']['install_dir'] + 'shows.json'))
     else
       sID = Hash.new
     end
-
-    #Stores directory local to TV_Notifier
-    home = Dir.pwd()
 
     Dir.chdir(conf['default']['media_dir'])
     Dir.glob('*').each do |show|
@@ -51,8 +48,8 @@ module Helper
     end
 
     # Save hash of title -> TVDB id to disk
-    Dir.chdir(home)
-    File.open('shows.json', 'w') do |f|
+    Dir.chdir(conf['default']['install_dir'])
+    File.open(conf['default']['install_dir'] + 'shows.json', 'w') do |f|
       f.write(JSON.pretty_generate(sID))
     end
 
