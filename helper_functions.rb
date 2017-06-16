@@ -1,4 +1,4 @@
-# Ryan Bega - helper functions for TV_Notifier
+#helper functions for TV_Notifier
 require 'json'
 require 'inifile'
 require 'addressable/uri'
