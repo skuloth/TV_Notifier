@@ -1,4 +1,4 @@
-# Ryan Bega - TV_Notifier.rb
+#TV_Notifier.rb
 
 require 'json'
 require 'inifile'
