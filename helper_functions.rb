@@ -69,7 +69,7 @@ module Helper
         if(response.code == 200)
           search = JSON.parse(response)['data']
           search.each do |ep|
-            if(ep.has_key?("episodeName")
+            if(ep.has_key?('episodeName')
               epStr = title + ': ' + ep['airedSeason'].to_s + 'x' + ep['airedEpisodeNumber'].to_s + ' - ' + ep['episodeName']
             else
               epStr = title + ': ' + ep['airedSeason'].to_s + 'x' + ep['airedEpisodeNumber'].to_s
