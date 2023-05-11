@@ -68,7 +68,7 @@ module Helper
       RestClient.get(url, auth) do |response, request, result|
         if(response.code == 200)
           search = JSON.parse(response)['data']
-          if(search != null)
+          if(search != nil)
             search.each do |ep|
               begin
                 epStr = title + ': ' + ep['airedSeason'].to_s + 'x' + ep['airedEpisodeNumber'].to_s + ' - ' + ep['episodeName']
