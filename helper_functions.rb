@@ -21,7 +21,7 @@ module Helper
   # Generate list of TVDB show IDs
   def Helper.showIDs (conf, auth)
 
-    if(File.exists?(conf['default']['install_dir'] + 'shows.json'))
+    if(File.exist?(conf['default']['install_dir'] + 'shows.json'))
       # Read in hash of show title -> TVDB ID
       sID = JSON.parse(File.read(conf['default']['install_dir'] + 'shows.json'))
     else
